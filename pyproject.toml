@@ -1,0 +1,76 @@
+[project]
+name = "ontology-llm"
+version = "0.1.0"
+description = "Ontology-aware LLM MVP with SQLite, OpenAI, and local SLM"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "openai>=1.40.0",
+  "python-dotenv>=1.0.1",
+  "PyYAML>=6.0.2",
+  "sqlalchemy>=2.0.46",
+  "fastapi>=0.116.0",
+  "uvicorn>=0.35.0",
+  "sentence-transformers>=5.2.2",
+  "chromadb>=1.4.1",
+  "rank-bm25>=0.2.2",
+  "networkx>=3.4.2",
+  "neo4j>=6.1.0",
+  "langgraph>=1.0.8",
+  "z3-solver>=4.15.4.0",
+  "rdflib>=7.5.0",
+  "owlready2>=0.50",
+  "scikit-learn>=1.7.2",
+]
+
+[project.optional-dependencies]
+# optional memory layer
+memori = [
+  "memori>=3.0.0",
+  "memory>=1.0.0",
+]
+
+# method3, method4: GraphRAG / KG reasoning
+method34 = [
+  "networkx>=3.3",
+  "neo4j>=5.24.0",
+  "langgraph>=0.2.0",
+]
+
+# method5: embedding + hybrid retrieval
+method5 = [
+  "sentence-transformers>=3.0.1",
+  "chromadb>=0.5.5",
+  "rank-bm25>=0.2.2",
+]
+
+# method6, method7, method8: neuro-symbolic / verification / ontology enrichment
+method678 = [
+  "z3-solver>=4.13.2.0",
+  "scikit-learn>=1.5.2",
+  "rdflib>=7.0.0",
+  "owlready2>=0.46",
+]
+
+# full research stack (method3~8)
+research-all = [
+  "networkx>=3.3",
+  "neo4j>=5.24.0",
+  "langgraph>=0.2.0",
+  "sentence-transformers>=3.0.1",
+  "chromadb>=0.5.5",
+  "rank-bm25>=0.2.2",
+  "z3-solver>=4.13.2.0",
+  "scikit-learn>=1.5.2",
+  "rdflib>=7.0.0",
+  "owlready2>=0.46",
+]
+
+[project.scripts]
+ontology-llm = "ontology_llm.app:main"
+ontology-exp = "ontology_llm.app:main"
+ontology-api = "ontology_llm.api:run"
+
+[build-system]
+requires = ["hatchling>=1.24.0"]
+build-backend = "hatchling.build"
