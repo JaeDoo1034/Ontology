@@ -1,0 +1,136 @@
+classes:
+  - name: Product
+    description: Item
+  - name: Brand
+    description: Maker
+  - name: Factory
+    description: Manufacturing site
+  - name: City
+    description: City node
+  - name: LogisticsHub
+    description: Distribution hub
+  - name: Store
+    description: Retail node
+
+instances:
+  - id: BANANA_MILK
+    class: Product
+    label: 바나나우유
+    properties:
+      - key: alias
+        value: 빠나 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 3000
+      - key: stock
+        value: 18
+  - id: CHOCOLATE_MILK
+    class: Product
+    label: 초코우유
+    properties:
+      - key: alias
+        value: 초코 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 3200
+      - key: stock
+        value: 12
+  - id: STRAWBERRY_MILK
+    class: Product
+    label: 딸기우유
+    properties:
+      - key: alias
+        value: 딸기 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 2800
+      - key: stock
+        value: 16
+  - id: MELON_MILK
+    class: Product
+    label: 멜론우유
+    properties:
+      - key: alias
+        value: 멜론 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 3400
+      - key: stock
+        value: 9
+  - id: WATERMELON_MILK
+    class: Product
+    label: 수박우유
+    properties:
+      - key: alias
+        value: 수박 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 3600
+      - key: stock
+        value: 6
+  - id: BINGGRAE
+    class: Brand
+    label: 빙그레
+    properties: []
+  - id: FACTORY_NAMYANGJU
+    class: Factory
+    label: 남양주 공장
+    properties: []
+  - id: CITY_NAMYANGJU
+    class: City
+    label: 남양주
+    properties: []
+  - id: HUB_SUWON
+    class: LogisticsHub
+    label: 수원 물류허브
+    properties: []
+  - id: STORE_GANGNAM
+    class: Store
+    label: 강남 매장
+    properties: []
+
+relations:
+  - source: BANANA_MILK
+    type: made_by
+    target: BINGGRAE
+  - source: CHOCOLATE_MILK
+    type: made_by
+    target: BINGGRAE
+  - source: STRAWBERRY_MILK
+    type: made_by
+    target: BINGGRAE
+  - source: MELON_MILK
+    type: made_by
+    target: BINGGRAE
+  - source: WATERMELON_MILK
+    type: made_by
+    target: BINGGRAE
+  - source: BINGGRAE
+    type: operates
+    target: FACTORY_NAMYANGJU
+  - source: FACTORY_NAMYANGJU
+    type: located_in
+    target: CITY_NAMYANGJU
+  - source: BANANA_MILK
+    type: distributed_via
+    target: HUB_SUWON
+  - source: CHOCOLATE_MILK
+    type: distributed_via
+    target: HUB_SUWON
+  - source: STRAWBERRY_MILK
+    type: distributed_via
+    target: HUB_SUWON
+  - source: MELON_MILK
+    type: distributed_via
+    target: HUB_SUWON
+  - source: WATERMELON_MILK
+    type: distributed_via
+    target: HUB_SUWON
+  - source: HUB_SUWON
+    type: supplies
+    target: STORE_GANGNAM

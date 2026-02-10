@@ -1,0 +1,117 @@
+classes:
+  - name: Product
+    description: Product node
+  - name: Rule
+    description: Symbolic rule node
+
+instances:
+  - id: BANANA_MILK
+    class: Product
+    label: 바나나우유
+    properties:
+      - key: alias
+        value: 빠나 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 3000
+      - key: stock
+        value: 15
+  - id: CHOCOLATE_MILK
+    class: Product
+    label: 초코우유
+    properties:
+      - key: alias
+        value: 초코 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 3200
+      - key: stock
+        value: 12
+  - id: STRAWBERRY_MILK
+    class: Product
+    label: 딸기우유
+    properties:
+      - key: alias
+        value: 딸기 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 2800
+      - key: stock
+        value: 18
+  - id: MELON_MILK
+    class: Product
+    label: 멜론우유
+    properties:
+      - key: alias
+        value: 멜론 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 3400
+      - key: stock
+        value: 9
+  - id: WATERMELON_MILK
+    class: Product
+    label: 수박우유
+    properties:
+      - key: alias
+        value: 수박 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 3600
+      - key: stock
+        value: 7
+
+  - id: RULE_PRICE_FIRST
+    class: Rule
+    label: 가격 우선 규칙
+    properties:
+      - key: if
+        value: question contains 가격|얼마|원
+      - key: then
+        value: answer first sentence must mention price_krw
+
+  - id: RULE_NO_STOCK_NO_SELL
+    class: Rule
+    label: 재고 제약 규칙
+    properties:
+      - key: if
+        value: stock equals 0
+      - key: then
+        value: answer should state sold out
+
+relations:
+  - source: RULE_PRICE_FIRST
+    type: constrains
+    target: BANANA_MILK
+  - source: RULE_PRICE_FIRST
+    type: constrains
+    target: CHOCOLATE_MILK
+  - source: RULE_PRICE_FIRST
+    type: constrains
+    target: STRAWBERRY_MILK
+  - source: RULE_PRICE_FIRST
+    type: constrains
+    target: MELON_MILK
+  - source: RULE_PRICE_FIRST
+    type: constrains
+    target: WATERMELON_MILK
+  - source: RULE_NO_STOCK_NO_SELL
+    type: constrains
+    target: BANANA_MILK
+  - source: RULE_NO_STOCK_NO_SELL
+    type: constrains
+    target: CHOCOLATE_MILK
+  - source: RULE_NO_STOCK_NO_SELL
+    type: constrains
+    target: STRAWBERRY_MILK
+  - source: RULE_NO_STOCK_NO_SELL
+    type: constrains
+    target: MELON_MILK
+  - source: RULE_NO_STOCK_NO_SELL
+    type: constrains
+    target: WATERMELON_MILK

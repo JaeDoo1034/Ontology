@@ -1,0 +1,244 @@
+classes:
+  - name: Product
+    description: Commerce item
+  - name: Brand
+    description: Product brand
+  - name: Store
+    description: Sales channel
+  - name: Region
+    description: Geographic area
+  - name: Policy
+    description: Business policy
+  - name: Supplier
+    description: Supplier/logistics partner
+  - name: Promotion
+    description: Promotion campaign
+
+instances:
+  - id: BANANA_MILK
+    class: Product
+    label: 바나나우유
+    properties:
+      - key: alias
+        value: 빠나 우유
+      - key: price_krw
+        value: 3000
+      - key: sku
+        value: BM-001
+      - key: category
+        value: 우유
+      - key: stock
+        value: 18
+  - id: CHOCOLATE_MILK
+    class: Product
+    label: 초코우유
+    properties:
+      - key: alias
+        value: 초코 우유
+      - key: price_krw
+        value: 3200
+      - key: sku
+        value: CM-001
+      - key: category
+        value: 우유
+      - key: stock
+        value: 12
+  - id: STRAWBERRY_MILK
+    class: Product
+    label: 딸기우유
+    properties:
+      - key: alias
+        value: 딸기 우유
+      - key: price_krw
+        value: 2800
+      - key: sku
+        value: SM-001
+      - key: category
+        value: 우유
+      - key: stock
+        value: 16
+  - id: MELON_MILK
+    class: Product
+    label: 멜론우유
+    properties:
+      - key: alias
+        value: 멜론 우유
+      - key: price_krw
+        value: 3400
+      - key: sku
+        value: MM-001
+      - key: category
+        value: 우유
+      - key: stock
+        value: 9
+  - id: WATERMELON_MILK
+    class: Product
+    label: 수박우유
+    properties:
+      - key: alias
+        value: 수박 우유
+      - key: price_krw
+        value: 3600
+      - key: sku
+        value: WM-001
+      - key: category
+        value: 우유
+      - key: stock
+        value: 6
+
+  - id: BINGGRAE
+    class: Brand
+    label: 빙그레
+    properties:
+      - key: country
+        value: KR
+
+  - id: STORE_001
+    class: Store
+    label: 온톨 편의점 강남점
+    properties:
+      - key: open_hour
+        value: "24h"
+
+  - id: REGION_GANGNAM
+    class: Region
+    label: 서울 강남
+    properties:
+      - key: city
+        value: 서울
+
+  - id: PRICE_POLICY_STD
+    class: Policy
+    label: 표준 가격 정책
+    properties:
+      - key: base_price_krw
+        value: 3000
+  - id: PRICE_POLICY_CHOCO
+    class: Policy
+    label: 초코우유 가격 정책
+    properties:
+      - key: base_price_krw
+        value: 3200
+  - id: PRICE_POLICY_STRAWBERRY
+    class: Policy
+    label: 딸기우유 가격 정책
+    properties:
+      - key: base_price_krw
+        value: 2800
+  - id: PRICE_POLICY_MELON
+    class: Policy
+    label: 멜론우유 가격 정책
+    properties:
+      - key: base_price_krw
+        value: 3400
+  - id: PRICE_POLICY_WATERMELON
+    class: Policy
+    label: 수박우유 가격 정책
+    properties:
+      - key: base_price_krw
+        value: 3600
+  - id: SUPPLIER_COLDCHAIN_A
+    class: Supplier
+    label: 콜드체인 A
+    properties:
+      - key: lead_time_day
+        value: 2
+  - id: SUPPLIER_COLDCHAIN_B
+    class: Supplier
+    label: 콜드체인 B
+    properties:
+      - key: lead_time_day
+        value: 3
+  - id: PROMO_BANANA_2PLUS1
+    class: Promotion
+    label: 바나나우유 2+1
+    properties:
+      - key: event_type
+        value: 2plus1
+      - key: discount_rate
+        value: 0.33
+  - id: PROMO_CHOCO_10P
+    class: Promotion
+    label: 초코우유 10% 할인
+    properties:
+      - key: event_type
+        value: discount
+      - key: discount_rate
+        value: 0.10
+
+relations:
+  - source: BANANA_MILK
+    type: made_by
+    target: BINGGRAE
+  - source: CHOCOLATE_MILK
+    type: made_by
+    target: BINGGRAE
+  - source: STRAWBERRY_MILK
+    type: made_by
+    target: BINGGRAE
+  - source: MELON_MILK
+    type: made_by
+    target: BINGGRAE
+  - source: WATERMELON_MILK
+    type: made_by
+    target: BINGGRAE
+  - source: BANANA_MILK
+    type: sold_at
+    target: STORE_001
+  - source: CHOCOLATE_MILK
+    type: sold_at
+    target: STORE_001
+  - source: STRAWBERRY_MILK
+    type: sold_at
+    target: STORE_001
+  - source: MELON_MILK
+    type: sold_at
+    target: STORE_001
+  - source: WATERMELON_MILK
+    type: sold_at
+    target: STORE_001
+  - source: STORE_001
+    type: located_in
+    target: REGION_GANGNAM
+  - source: BANANA_MILK
+    type: governed_by
+    target: PRICE_POLICY_STD
+  - source: CHOCOLATE_MILK
+    type: governed_by
+    target: PRICE_POLICY_CHOCO
+  - source: STRAWBERRY_MILK
+    type: governed_by
+    target: PRICE_POLICY_STRAWBERRY
+  - source: MELON_MILK
+    type: governed_by
+    target: PRICE_POLICY_MELON
+  - source: WATERMELON_MILK
+    type: governed_by
+    target: PRICE_POLICY_WATERMELON
+  - source: BANANA_MILK
+    type: supplied_by
+    target: SUPPLIER_COLDCHAIN_A
+  - source: CHOCOLATE_MILK
+    type: supplied_by
+    target: SUPPLIER_COLDCHAIN_A
+  - source: STRAWBERRY_MILK
+    type: supplied_by
+    target: SUPPLIER_COLDCHAIN_A
+  - source: MELON_MILK
+    type: supplied_by
+    target: SUPPLIER_COLDCHAIN_B
+  - source: WATERMELON_MILK
+    type: supplied_by
+    target: SUPPLIER_COLDCHAIN_B
+  - source: BANANA_MILK
+    type: has_promotion
+    target: PROMO_BANANA_2PLUS1
+  - source: CHOCOLATE_MILK
+    type: has_promotion
+    target: PROMO_CHOCO_10P
+  - source: PROMO_BANANA_2PLUS1
+    type: applies_to
+    target: BANANA_MILK
+  - source: PROMO_CHOCO_10P
+    type: applies_to
+    target: CHOCOLATE_MILK

@@ -1,0 +1,132 @@
+classes:
+  - name: Thing
+    description: Physical object
+  - name: Beverage
+    description: Drinkable product
+
+instances:
+  - id: BANANA_MILK
+    class: Beverage
+    label: 바나나우유
+    properties:
+      - key: alias
+        value: 빠나 우유
+      - key: alias
+        value: 빠나나 우유
+      - key: alias
+        value: banana milk
+      - key: keyword
+        value: 우유
+      - key: keyword
+        value: 가격
+      - key: keyword
+        value: 바나나
+      - key: category
+        value: 우유
+      - key: stock
+        value: 18
+      - key: price_krw
+        value: 3000
+  - id: CHOCOLATE_MILK
+    class: Beverage
+    label: 초코우유
+    properties:
+      - key: alias
+        value: 초코 우유
+      - key: alias
+        value: chocolate milk
+      - key: keyword
+        value: 우유
+      - key: keyword
+        value: 가격
+      - key: keyword
+        value: 초코
+      - key: category
+        value: 우유
+      - key: stock
+        value: 12
+      - key: price_krw
+        value: 3200
+  - id: STRAWBERRY_MILK
+    class: Beverage
+    label: 딸기우유
+    properties:
+      - key: alias
+        value: 딸기 우유
+      - key: alias
+        value: strawberry milk
+      - key: keyword
+        value: 우유
+      - key: keyword
+        value: 가격
+      - key: keyword
+        value: 딸기
+      - key: category
+        value: 우유
+      - key: stock
+        value: 16
+      - key: price_krw
+        value: 2800
+  - id: MELON_MILK
+    class: Beverage
+    label: 멜론우유
+    properties:
+      - key: alias
+        value: 멜론 우유
+      - key: alias
+        value: melon milk
+      - key: keyword
+        value: 우유
+      - key: keyword
+        value: 가격
+      - key: keyword
+        value: 멜론
+      - key: category
+        value: 우유
+      - key: stock
+        value: 9
+      - key: price_krw
+        value: 3400
+  - id: WATERMELON_MILK
+    class: Beverage
+    label: 수박우유
+    properties:
+      - key: alias
+        value: 수박 우유
+      - key: alias
+        value: watermelon milk
+      - key: keyword
+        value: 우유
+      - key: keyword
+        value: 가격
+      - key: keyword
+        value: 수박
+      - key: category
+        value: 우유
+      - key: stock
+        value: 6
+      - key: price_krw
+        value: 3600
+  - id: BEVERAGE_CLASS
+    class: Thing
+    label: 음료 클래스 노드
+    properties:
+      - key: note
+        value: Beverage type anchor instance for is_a relation
+
+relations:
+  - source: BANANA_MILK
+    type: is_a
+    target: BEVERAGE_CLASS
+  - source: CHOCOLATE_MILK
+    type: is_a
+    target: BEVERAGE_CLASS
+  - source: STRAWBERRY_MILK
+    type: is_a
+    target: BEVERAGE_CLASS
+  - source: MELON_MILK
+    type: is_a
+    target: BEVERAGE_CLASS
+  - source: WATERMELON_MILK
+    type: is_a
+    target: BEVERAGE_CLASS

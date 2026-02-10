@@ -1,0 +1,488 @@
+classes:
+  - name: Product
+    description: Milk product SKU
+  - name: Brand
+    description: Brand owner
+  - name: Flavor
+    description: Flavor category
+  - name: NutrientProfile
+    description: Nutrition facts per item
+  - name: Allergen
+    description: Allergen information
+  - name: Store
+    description: Retail store
+  - name: Region
+    description: Geographic area
+  - name: Promotion
+    description: Promotion campaign
+  - name: Supplier
+    description: Supplier or logistics provider
+  - name: Policy
+    description: Business or answer policy
+  - name: QuestionLog
+    description: User query signal for enrichment
+
+instances:
+  - id: BRAND_BINGGRAE
+    class: Brand
+    label: 빙그레
+    properties:
+      - key: country
+        value: KR
+  - id: BRAND_SEOUL_DAIRY
+    class: Brand
+    label: 서울우유
+    properties:
+      - key: country
+        value: KR
+
+  - id: FLAVOR_BANANA
+    class: Flavor
+    label: 바나나
+    properties: []
+  - id: FLAVOR_CHOCOLATE
+    class: Flavor
+    label: 초코
+    properties: []
+  - id: FLAVOR_STRAWBERRY
+    class: Flavor
+    label: 딸기
+    properties: []
+  - id: FLAVOR_MELON
+    class: Flavor
+    label: 멜론
+    properties: []
+  - id: FLAVOR_WATERMELON
+    class: Flavor
+    label: 수박
+    properties: []
+
+  - id: ALLERGEN_MILK
+    class: Allergen
+    label: 우유 알레르겐
+    properties:
+      - key: code
+        value: milk
+  - id: ALLERGEN_SOY
+    class: Allergen
+    label: 대두 알레르겐
+    properties:
+      - key: code
+        value: soy
+
+  - id: REGION_GANGNAM
+    class: Region
+    label: 서울 강남
+    properties:
+      - key: city
+        value: 서울
+  - id: REGION_HONGDAE
+    class: Region
+    label: 서울 홍대
+    properties:
+      - key: city
+        value: 서울
+
+  - id: STORE_GANGNAM_CVS
+    class: Store
+    label: 온톨 편의점 강남점
+    properties:
+      - key: open_hour
+        value: 24h
+  - id: STORE_HONGDAE_CVS
+    class: Store
+    label: 온톨 편의점 홍대점
+    properties:
+      - key: open_hour
+        value: 24h
+
+  - id: SUPPLIER_COLDCHAIN_A
+    class: Supplier
+    label: 콜드체인 A
+    properties:
+      - key: lead_time_day
+        value: 2
+  - id: SUPPLIER_COLDCHAIN_B
+    class: Supplier
+    label: 콜드체인 B
+    properties:
+      - key: lead_time_day
+        value: 3
+
+  - id: POLICY_PRICE_PRIORITY
+    class: Policy
+    label: 가격 우선 응답 정책
+    properties:
+      - key: rule
+        value: 가격 질문이면 가격을 첫 문장에 제시
+      - key: priority
+        value: high
+  - id: POLICY_STOCK_SOLDOUT
+    class: Policy
+    label: 품절 안내 정책
+    properties:
+      - key: rule
+        value: stock equals 0 then sold out
+      - key: priority
+        value: high
+
+  - id: PROMO_BANANA_2PLUS1
+    class: Promotion
+    label: 바나나우유 2+1
+    properties:
+      - key: event_type
+        value: 2plus1
+      - key: discount_rate
+        value: 0.33
+      - key: end_date
+        value: 2026-03-31
+  - id: PROMO_CHOCO_10P
+    class: Promotion
+    label: 초코우유 10% 할인
+    properties:
+      - key: event_type
+        value: discount
+      - key: discount_rate
+        value: 0.10
+      - key: end_date
+        value: 2026-03-15
+
+  - id: NUT_BANANA_STD
+    class: NutrientProfile
+    label: 바나나우유 영양
+    properties:
+      - key: kcal
+        value: 208
+      - key: sugar_g
+        value: 28
+      - key: protein_g
+        value: 6
+      - key: fat_g
+        value: 8
+  - id: NUT_CHOCO_STD
+    class: NutrientProfile
+    label: 초코우유 영양
+    properties:
+      - key: kcal
+        value: 220
+      - key: sugar_g
+        value: 30
+      - key: protein_g
+        value: 7
+      - key: fat_g
+        value: 8
+  - id: NUT_STRAW_STD
+    class: NutrientProfile
+    label: 딸기우유 영양
+    properties:
+      - key: kcal
+        value: 205
+      - key: sugar_g
+        value: 27
+      - key: protein_g
+        value: 6
+      - key: fat_g
+        value: 7
+  - id: NUT_MELON_STD
+    class: NutrientProfile
+    label: 멜론우유 영양
+    properties:
+      - key: kcal
+        value: 215
+      - key: sugar_g
+        value: 29
+      - key: protein_g
+        value: 6
+      - key: fat_g
+        value: 8
+  - id: NUT_WATERMELON_STD
+    class: NutrientProfile
+    label: 수박우유 영양
+    properties:
+      - key: kcal
+        value: 210
+      - key: sugar_g
+        value: 28
+      - key: protein_g
+        value: 5
+      - key: fat_g
+        value: 7
+
+  - id: BANANA_MILK
+    class: Product
+    label: 바나나우유
+    properties:
+      - key: alias
+        value: 빠나 우유
+      - key: alias
+        value: banana milk
+      - key: descriptor
+        value: 달콤한 바나나 향 우유 음료
+      - key: category
+        value: 우유
+      - key: volume_ml
+        value: 240
+      - key: price_krw
+        value: 3000
+      - key: stock
+        value: 18
+  - id: CHOCOLATE_MILK
+    class: Product
+    label: 초코우유
+    properties:
+      - key: alias
+        value: 초코 우유
+      - key: alias
+        value: chocolate milk
+      - key: descriptor
+        value: 진한 초콜릿 풍미 우유 음료
+      - key: category
+        value: 우유
+      - key: volume_ml
+        value: 240
+      - key: price_krw
+        value: 3200
+      - key: stock
+        value: 12
+  - id: STRAWBERRY_MILK
+    class: Product
+    label: 딸기우유
+    properties:
+      - key: alias
+        value: 딸기 우유
+      - key: alias
+        value: strawberry milk
+      - key: descriptor
+        value: 새콤달콤 딸기향 우유 음료
+      - key: category
+        value: 우유
+      - key: volume_ml
+        value: 240
+      - key: price_krw
+        value: 2800
+      - key: stock
+        value: 16
+  - id: MELON_MILK
+    class: Product
+    label: 멜론우유
+    properties:
+      - key: alias
+        value: 멜론 우유
+      - key: alias
+        value: melon milk
+      - key: descriptor
+        value: 청량한 멜론향 우유 음료
+      - key: category
+        value: 우유
+      - key: volume_ml
+        value: 240
+      - key: price_krw
+        value: 3400
+      - key: stock
+        value: 9
+      - key: needs_enrichment
+        value: true
+      - key: missing_property
+        value: allergen
+  - id: WATERMELON_MILK
+    class: Product
+    label: 수박우유
+    properties:
+      - key: alias
+        value: 수박 우유
+      - key: alias
+        value: watermelon milk
+      - key: descriptor
+        value: 시원한 수박향 우유 음료
+      - key: category
+        value: 우유
+      - key: volume_ml
+        value: 240
+      - key: price_krw
+        value: 3600
+      - key: stock
+        value: 6
+      - key: needs_enrichment
+        value: true
+      - key: missing_property
+        value: shelf_life_day
+
+  - id: QUESTION_101
+    class: QuestionLog
+    label: 강남 매장에서 초코우유 가격 알려줘
+    properties:
+      - key: intent
+        value: ask_price
+      - key: suggested_new_alias
+        value: 달콤초코우유
+  - id: QUESTION_102
+    class: QuestionLog
+    label: 멜론우유 알레르기 정보 있어?
+    properties:
+      - key: intent
+        value: ask_allergen
+      - key: suggested_new_alias
+        value: 메론우유
+
+relations:
+  - source: BANANA_MILK
+    type: made_by
+    target: BRAND_BINGGRAE
+  - source: CHOCOLATE_MILK
+    type: made_by
+    target: BRAND_BINGGRAE
+  - source: STRAWBERRY_MILK
+    type: made_by
+    target: BRAND_SEOUL_DAIRY
+  - source: MELON_MILK
+    type: made_by
+    target: BRAND_BINGGRAE
+  - source: WATERMELON_MILK
+    type: made_by
+    target: BRAND_SEOUL_DAIRY
+
+  - source: BANANA_MILK
+    type: has_flavor
+    target: FLAVOR_BANANA
+  - source: CHOCOLATE_MILK
+    type: has_flavor
+    target: FLAVOR_CHOCOLATE
+  - source: STRAWBERRY_MILK
+    type: has_flavor
+    target: FLAVOR_STRAWBERRY
+  - source: MELON_MILK
+    type: has_flavor
+    target: FLAVOR_MELON
+  - source: WATERMELON_MILK
+    type: has_flavor
+    target: FLAVOR_WATERMELON
+
+  - source: BANANA_MILK
+    type: has_nutrition
+    target: NUT_BANANA_STD
+  - source: CHOCOLATE_MILK
+    type: has_nutrition
+    target: NUT_CHOCO_STD
+  - source: STRAWBERRY_MILK
+    type: has_nutrition
+    target: NUT_STRAW_STD
+  - source: MELON_MILK
+    type: has_nutrition
+    target: NUT_MELON_STD
+  - source: WATERMELON_MILK
+    type: has_nutrition
+    target: NUT_WATERMELON_STD
+
+  - source: BANANA_MILK
+    type: contains_allergen
+    target: ALLERGEN_MILK
+  - source: CHOCOLATE_MILK
+    type: contains_allergen
+    target: ALLERGEN_MILK
+  - source: STRAWBERRY_MILK
+    type: contains_allergen
+    target: ALLERGEN_MILK
+  - source: MELON_MILK
+    type: contains_allergen
+    target: ALLERGEN_MILK
+  - source: WATERMELON_MILK
+    type: contains_allergen
+    target: ALLERGEN_MILK
+  - source: CHOCOLATE_MILK
+    type: contains_allergen
+    target: ALLERGEN_SOY
+
+  - source: BANANA_MILK
+    type: sold_at
+    target: STORE_GANGNAM_CVS
+  - source: CHOCOLATE_MILK
+    type: sold_at
+    target: STORE_GANGNAM_CVS
+  - source: STRAWBERRY_MILK
+    type: sold_at
+    target: STORE_GANGNAM_CVS
+  - source: MELON_MILK
+    type: sold_at
+    target: STORE_HONGDAE_CVS
+  - source: WATERMELON_MILK
+    type: sold_at
+    target: STORE_HONGDAE_CVS
+  - source: STORE_GANGNAM_CVS
+    type: located_in
+    target: REGION_GANGNAM
+  - source: STORE_HONGDAE_CVS
+    type: located_in
+    target: REGION_HONGDAE
+
+  - source: BANANA_MILK
+    type: supplied_by
+    target: SUPPLIER_COLDCHAIN_A
+  - source: CHOCOLATE_MILK
+    type: supplied_by
+    target: SUPPLIER_COLDCHAIN_A
+  - source: STRAWBERRY_MILK
+    type: supplied_by
+    target: SUPPLIER_COLDCHAIN_A
+  - source: MELON_MILK
+    type: supplied_by
+    target: SUPPLIER_COLDCHAIN_B
+  - source: WATERMELON_MILK
+    type: supplied_by
+    target: SUPPLIER_COLDCHAIN_B
+
+  - source: BANANA_MILK
+    type: governed_by
+    target: POLICY_PRICE_PRIORITY
+  - source: CHOCOLATE_MILK
+    type: governed_by
+    target: POLICY_PRICE_PRIORITY
+  - source: STRAWBERRY_MILK
+    type: governed_by
+    target: POLICY_PRICE_PRIORITY
+  - source: MELON_MILK
+    type: governed_by
+    target: POLICY_PRICE_PRIORITY
+  - source: WATERMELON_MILK
+    type: governed_by
+    target: POLICY_PRICE_PRIORITY
+  - source: BANANA_MILK
+    type: governed_by
+    target: POLICY_STOCK_SOLDOUT
+  - source: CHOCOLATE_MILK
+    type: governed_by
+    target: POLICY_STOCK_SOLDOUT
+  - source: STRAWBERRY_MILK
+    type: governed_by
+    target: POLICY_STOCK_SOLDOUT
+  - source: MELON_MILK
+    type: governed_by
+    target: POLICY_STOCK_SOLDOUT
+  - source: WATERMELON_MILK
+    type: governed_by
+    target: POLICY_STOCK_SOLDOUT
+
+  - source: BANANA_MILK
+    type: has_promotion
+    target: PROMO_BANANA_2PLUS1
+  - source: CHOCOLATE_MILK
+    type: has_promotion
+    target: PROMO_CHOCO_10P
+  - source: PROMO_BANANA_2PLUS1
+    type: applies_to
+    target: BANANA_MILK
+  - source: PROMO_CHOCO_10P
+    type: applies_to
+    target: CHOCOLATE_MILK
+
+  - source: QUESTION_101
+    type: refers_to
+    target: CHOCOLATE_MILK
+  - source: QUESTION_101
+    type: suggests_update_for
+    target: CHOCOLATE_MILK
+  - source: QUESTION_102
+    type: refers_to
+    target: MELON_MILK
+  - source: QUESTION_102
+    type: suggests_update_for
+    target: MELON_MILK

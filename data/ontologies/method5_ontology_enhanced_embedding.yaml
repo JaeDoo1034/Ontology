@@ -1,0 +1,112 @@
+classes:
+  - name: Product
+    description: Product with rich textual descriptors
+
+instances:
+  - id: BANANA_MILK
+    class: Product
+    label: 바나나우유
+    properties:
+      - key: alias
+        value: 빠나 우유
+      - key: alias
+        value: banana milk
+      - key: alias
+        value: 바나나맛우유
+      - key: descriptor
+        value: 달콤한 바나나 향 우유 음료
+      - key: descriptor
+        value: 노란색 용기와 어린 시절 간식 이미지
+      - key: descriptor
+        value: cold drink convenience store bestseller
+      - key: category
+        value: 우유
+      - key: stock
+        value: 18
+      - key: price_krw
+        value: 3000
+
+  - id: STRAWBERRY_MILK
+    class: Product
+    label: 딸기우유
+    properties:
+      - key: alias
+        value: 딸기 우유
+      - key: alias
+        value: strawberry milk
+      - key: descriptor
+        value: 새콤달콤 딸기향 우유 음료
+      - key: category
+        value: 우유
+      - key: stock
+        value: 16
+      - key: price_krw
+        value: 2800
+  - id: CHOCOLATE_MILK
+    class: Product
+    label: 초코우유
+    properties:
+      - key: alias
+        value: 초코 우유
+      - key: alias
+        value: chocolate milk
+      - key: descriptor
+        value: 진한 코코아 풍미의 달콤한 우유 음료
+      - key: descriptor
+        value: 초콜릿 향 디저트 밀크
+      - key: category
+        value: 우유
+      - key: stock
+        value: 12
+      - key: price_krw
+        value: 3200
+  - id: MELON_MILK
+    class: Product
+    label: 멜론우유
+    properties:
+      - key: alias
+        value: 멜론 우유
+      - key: alias
+        value: melon milk
+      - key: descriptor
+        value: 청량한 멜론 향과 부드러운 밀크 조합
+      - key: descriptor
+        value: summer sweet melon flavored milk
+      - key: category
+        value: 우유
+      - key: stock
+        value: 9
+      - key: price_krw
+        value: 3400
+  - id: WATERMELON_MILK
+    class: Product
+    label: 수박우유
+    properties:
+      - key: alias
+        value: 수박 우유
+      - key: alias
+        value: watermelon milk
+      - key: descriptor
+        value: 시원한 수박향과 우유의 조합
+      - key: descriptor
+        value: refreshing watermelon style milk drink
+      - key: category
+        value: 우유
+      - key: stock
+        value: 6
+      - key: price_krw
+        value: 3600
+
+relations:
+  - source: BANANA_MILK
+    type: similar_to
+    target: STRAWBERRY_MILK
+  - source: BANANA_MILK
+    type: similar_to
+    target: CHOCOLATE_MILK
+  - source: BANANA_MILK
+    type: similar_to
+    target: MELON_MILK
+  - source: BANANA_MILK
+    type: similar_to
+    target: WATERMELON_MILK

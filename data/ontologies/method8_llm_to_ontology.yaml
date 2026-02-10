@@ -1,0 +1,170 @@
+classes:
+  - name: Product
+    description: Product concept
+  - name: QuestionLog
+    description: User query snapshot for ontology enrichment
+
+instances:
+  - id: BANANA_MILK
+    class: Product
+    label: 바나나우유
+    properties:
+      - key: alias
+        value: 빠나 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 3000
+      - key: stock
+        value: 18
+      - key: needs_enrichment
+        value: true
+      - key: missing_property
+        value: nutrition_kcal
+      - key: missing_property
+        value: manufacturer
+  - id: CHOCOLATE_MILK
+    class: Product
+    label: 초코우유
+    properties:
+      - key: alias
+        value: 초코 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 3200
+      - key: stock
+        value: 12
+      - key: needs_enrichment
+        value: true
+      - key: missing_property
+        value: sugar_g
+      - key: missing_property
+        value: caffeine_mg
+  - id: STRAWBERRY_MILK
+    class: Product
+    label: 딸기우유
+    properties:
+      - key: alias
+        value: 딸기 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 2800
+      - key: stock
+        value: 16
+      - key: needs_enrichment
+        value: true
+      - key: missing_property
+        value: nutrition_kcal
+      - key: missing_property
+        value: origin_country
+  - id: MELON_MILK
+    class: Product
+    label: 멜론우유
+    properties:
+      - key: alias
+        value: 멜론 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 3400
+      - key: stock
+        value: 9
+      - key: needs_enrichment
+        value: true
+      - key: missing_property
+        value: fruit_content_ratio
+      - key: missing_property
+        value: allergen
+  - id: WATERMELON_MILK
+    class: Product
+    label: 수박우유
+    properties:
+      - key: alias
+        value: 수박 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 3600
+      - key: stock
+        value: 6
+      - key: needs_enrichment
+        value: true
+      - key: missing_property
+        value: nutrition_kcal
+      - key: missing_property
+        value: shelf_life_day
+
+  - id: QUESTION_001
+    class: QuestionLog
+    label: 빠나 우유 가격이 뭐야
+    properties:
+      - key: intent
+        value: ask_price
+      - key: suggested_new_alias
+        value: 빠나나우유
+  - id: QUESTION_002
+    class: QuestionLog
+    label: 초코 우유 가격이랑 당류 정보 알려줘
+    properties:
+      - key: intent
+        value: ask_price_nutrition
+      - key: suggested_new_alias
+        value: 달콤초코우유
+  - id: QUESTION_003
+    class: QuestionLog
+    label: 멜론 우유 알레르기 정보 있어?
+    properties:
+      - key: intent
+        value: ask_allergen
+      - key: suggested_new_alias
+        value: 메론우유
+  - id: QUESTION_004
+    class: QuestionLog
+    label: 딸기 우유 원산지 정보 있어?
+    properties:
+      - key: intent
+        value: ask_origin
+      - key: suggested_new_alias
+        value: 스트로베리우유
+  - id: QUESTION_005
+    class: QuestionLog
+    label: 수박 우유 유통기한 정보 추가해줘
+    properties:
+      - key: intent
+        value: ask_shelf_life
+      - key: suggested_new_alias
+        value: 워터멜론우유
+
+relations:
+  - source: QUESTION_001
+    type: refers_to
+    target: BANANA_MILK
+  - source: QUESTION_001
+    type: suggests_update_for
+    target: BANANA_MILK
+  - source: QUESTION_002
+    type: refers_to
+    target: CHOCOLATE_MILK
+  - source: QUESTION_002
+    type: suggests_update_for
+    target: CHOCOLATE_MILK
+  - source: QUESTION_003
+    type: refers_to
+    target: MELON_MILK
+  - source: QUESTION_003
+    type: suggests_update_for
+    target: MELON_MILK
+  - source: QUESTION_004
+    type: refers_to
+    target: STRAWBERRY_MILK
+  - source: QUESTION_004
+    type: suggests_update_for
+    target: STRAWBERRY_MILK
+  - source: QUESTION_005
+    type: refers_to
+    target: WATERMELON_MILK
+  - source: QUESTION_005
+    type: suggests_update_for
+    target: WATERMELON_MILK

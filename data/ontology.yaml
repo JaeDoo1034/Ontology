@@ -1,0 +1,44 @@
+classes:
+  - name: Thing
+    description: A physical object
+  - name: Milk
+    description: Milk beverage as a kind of Thing
+
+instances:
+  - id: THING_CLASS
+    class: Thing
+    label: 사물
+    properties:
+      - key: concept_type
+        value: class
+
+  - id: MILK_CLASS
+    class: Milk
+    label: 우유
+    properties:
+      - key: concept_type
+        value: class
+
+  - id: MILK001
+    class: Milk
+    label: 바나나우유
+    properties:
+      - key: alias
+        value: 빠나 우유
+      - key: item_type
+        value: 우유
+      - key: category
+        value: 사물
+      - key: price_krw
+        value: 3000
+      - key: price_display
+        value: 3000원
+
+relations:
+  - source: MILK001
+    type: is_a
+    target: MILK_CLASS
+
+  - source: MILK_CLASS
+    type: is_a
+    target: THING_CLASS

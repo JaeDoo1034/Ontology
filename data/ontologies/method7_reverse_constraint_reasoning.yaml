@@ -1,0 +1,221 @@
+classes:
+  - name: Product
+    description: Product node
+  - name: Constraint
+    description: Validation constraint
+  - name: CandidateAnswer
+    description: Candidate output for reverse validation
+
+instances:
+  - id: BANANA_MILK
+    class: Product
+    label: 바나나우유
+    properties:
+      - key: alias
+        value: 빠나 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 3000
+      - key: stock
+        value: 18
+  - id: CHOCOLATE_MILK
+    class: Product
+    label: 초코우유
+    properties:
+      - key: alias
+        value: 초코 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 3200
+      - key: stock
+        value: 12
+  - id: STRAWBERRY_MILK
+    class: Product
+    label: 딸기우유
+    properties:
+      - key: alias
+        value: 딸기 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 2800
+      - key: stock
+        value: 16
+  - id: MELON_MILK
+    class: Product
+    label: 멜론우유
+    properties:
+      - key: alias
+        value: 멜론 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 3400
+      - key: stock
+        value: 9
+  - id: WATERMELON_MILK
+    class: Product
+    label: 수박우유
+    properties:
+      - key: alias
+        value: 수박 우유
+      - key: category
+        value: 우유
+      - key: price_krw
+        value: 3600
+      - key: stock
+        value: 6
+
+  - id: CAND_A
+    class: CandidateAnswer
+    label: 후보 A
+    properties:
+      - key: text
+        value: 바나나우유 가격은 2500원입니다.
+
+  - id: CAND_B
+    class: CandidateAnswer
+    label: 후보 B
+    properties:
+      - key: text
+        value: 바나나우유 가격은 3000원입니다.
+  - id: CAND_CHOCO_A
+    class: CandidateAnswer
+    label: 초코 후보 A
+    properties:
+      - key: text
+        value: 초코우유 가격은 3000원입니다.
+  - id: CAND_CHOCO_B
+    class: CandidateAnswer
+    label: 초코 후보 B
+    properties:
+      - key: text
+        value: 초코우유 가격은 3200원입니다.
+  - id: CAND_STRAW_A
+    class: CandidateAnswer
+    label: 딸기 후보 A
+    properties:
+      - key: text
+        value: 딸기우유 가격은 3000원입니다.
+  - id: CAND_STRAW_B
+    class: CandidateAnswer
+    label: 딸기 후보 B
+    properties:
+      - key: text
+        value: 딸기우유 가격은 2800원입니다.
+  - id: CAND_MELON_A
+    class: CandidateAnswer
+    label: 멜론 후보 A
+    properties:
+      - key: text
+        value: 멜론우유 가격은 3300원입니다.
+  - id: CAND_MELON_B
+    class: CandidateAnswer
+    label: 멜론 후보 B
+    properties:
+      - key: text
+        value: 멜론우유 가격은 3400원입니다.
+  - id: CAND_WATERMELON_A
+    class: CandidateAnswer
+    label: 수박 후보 A
+    properties:
+      - key: text
+        value: 수박우유 가격은 3500원입니다.
+  - id: CAND_WATERMELON_B
+    class: CandidateAnswer
+    label: 수박 후보 B
+    properties:
+      - key: text
+        value: 수박우유 가격은 3600원입니다.
+
+  - id: CONS_MATCH_PRICE
+    class: Constraint
+    label: 가격 일치 제약
+    properties:
+      - key: rule
+        value: candidate must match price_krw of product
+  - id: CONS_GROUNDED_EVIDENCE
+    class: Constraint
+    label: 근거 포함 제약
+    properties:
+      - key: rule
+        value: validated candidate should be grounded on ontology fact
+
+relations:
+  - source: CONS_MATCH_PRICE
+    type: validates
+    target: CAND_A
+  - source: CONS_MATCH_PRICE
+    type: validates
+    target: CAND_B
+  - source: CONS_MATCH_PRICE
+    type: validates
+    target: CAND_CHOCO_A
+  - source: CONS_MATCH_PRICE
+    type: validates
+    target: CAND_CHOCO_B
+  - source: CONS_MATCH_PRICE
+    type: validates
+    target: CAND_STRAW_A
+  - source: CONS_MATCH_PRICE
+    type: validates
+    target: CAND_STRAW_B
+  - source: CONS_MATCH_PRICE
+    type: validates
+    target: CAND_MELON_A
+  - source: CONS_MATCH_PRICE
+    type: validates
+    target: CAND_MELON_B
+  - source: CONS_MATCH_PRICE
+    type: validates
+    target: CAND_WATERMELON_A
+  - source: CONS_MATCH_PRICE
+    type: validates
+    target: CAND_WATERMELON_B
+  - source: CONS_GROUNDED_EVIDENCE
+    type: validates
+    target: CAND_B
+  - source: CONS_GROUNDED_EVIDENCE
+    type: validates
+    target: CAND_CHOCO_B
+  - source: CONS_GROUNDED_EVIDENCE
+    type: validates
+    target: CAND_STRAW_B
+  - source: CONS_GROUNDED_EVIDENCE
+    type: validates
+    target: CAND_MELON_B
+  - source: CONS_GROUNDED_EVIDENCE
+    type: validates
+    target: CAND_WATERMELON_B
+  - source: CONS_MATCH_PRICE
+    type: grounded_on
+    target: BANANA_MILK
+  - source: CONS_MATCH_PRICE
+    type: grounded_on
+    target: CHOCOLATE_MILK
+  - source: CONS_MATCH_PRICE
+    type: grounded_on
+    target: STRAWBERRY_MILK
+  - source: CONS_MATCH_PRICE
+    type: grounded_on
+    target: MELON_MILK
+  - source: CONS_MATCH_PRICE
+    type: grounded_on
+    target: WATERMELON_MILK
+  - source: CONS_GROUNDED_EVIDENCE
+    type: grounded_on
+    target: BANANA_MILK
+  - source: CONS_GROUNDED_EVIDENCE
+    type: grounded_on
+    target: CHOCOLATE_MILK
+  - source: CONS_GROUNDED_EVIDENCE
+    type: grounded_on
+    target: STRAWBERRY_MILK
+  - source: CONS_GROUNDED_EVIDENCE
+    type: grounded_on
+    target: MELON_MILK
+  - source: CONS_GROUNDED_EVIDENCE
+    type: grounded_on
+    target: WATERMELON_MILK

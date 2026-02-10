@@ -1,0 +1,132 @@
+flowchart LR
+    %% =========================
+    %% 1) Query Understanding
+    %% =========================
+    subgraph Q["**1. Query Understanding**"]
+        direction TB
+        Q1[Question Input]
+        Q2[Normalization]
+        Q3[Intent Classification]
+        Q4[Entity Extraction]
+        Q1 --> Q2 --> Q3 --> Q4
+    end
+
+    %% =========================
+    %% 2) Retrieval
+    %% =========================
+    subgraph R["**2. Retrieval**"]
+        direction TB
+        R1[Ontology Search]
+        R2[Alias Mapping]
+        R3[Table Selection]
+        R4[Candidate Retrieval]
+        R1 --> R2 --> R3 --> R4
+    end
+
+    %% =========================
+    %% 3) Candidate Generation
+    %% =========================
+    subgraph C["**3. Candidate Generation**"]
+        direction TB
+        C1[Fact Extraction]
+        C2[price_hint Creation]
+        C3[Evidence Collection]
+        C1 --> C2 --> C3
+    end
+
+    %% =========================
+    %% 4) Validation & Ranking
+    %% =========================
+    subgraph V["**4. Validation & Ranking**"]
+        direction TB
+        V1[Rule Violation Checks]
+        V2[Policy Guardrails]
+        D1{Rule violation?}
+        V3[Evidence Scoring]
+        V4[Priority Ranking]
+        D2{Confidence threshold met?}
+
+        V1 -.-> V2 -.-> D1
+        D1 -- No -.-> V3 -.-> V4 -.-> D2
+    end
+
+    %% =========================
+    %% 5) Context Assembly
+    %% =========================
+    subgraph X["**5. Context Assembly**"]
+        direction TB
+        X1[Fact Context]
+        X2[Ontology Definitions]
+        X3[Policy Constraints]
+        X4[Tool Schemas]
+        X5[Bundle Prompt Context]
+        X1 --> X2 --> X3 --> X4 --> X5
+    end
+
+    %% =========================
+    %% 6) LLM Generation
+    %% =========================
+    subgraph L["**6. LLM Generation**"]
+        direction TB
+        L1[Prompt Injection]
+        L2[Tool Calling]
+        L3[Answer Drafting]
+        L4[Confidence Scoring]
+        L5[Logging]
+        L6[Final Answer Output]
+        L1 --> L2 --> L3 --> L4 --> L5 --> L6
+    end
+
+    %% =========================
+    %% Artifacts between layers
+    %% =========================
+    A1["`normalized_question`"]
+    A2["`ontology_match`"]
+    A3["`candidate_answers`"]
+    A4["`ranked_candidates`"]
+    A5["`final_context_bundle`"]
+    A6["`final_answer`"]
+
+    Q4 --> A1 --> R1
+    R4 --> A2 --> C1
+    C3 --> A3 --> V1
+    V4 --> A4
+    A4 -.-> D2
+    D2 -- Yes --> X1
+    X5 --> A5 --> L1
+    L6 --> A6
+
+    %% =========================
+    %% Fallback routing
+    %% =========================
+    F0{Fallback Decision}
+    F1[Fallback LLM]
+    F2[Safe Answer]
+
+    D1 -- Yes -.-> F0
+    D2 -- No -.-> F0
+    F0 -- Route to Fallback LLM --> F1
+    F0 -- Route to Safe Answer --> F2
+
+    %% =========================
+    %% Visual style classes
+    %% =========================
+    classDef query fill:#EAF3FF,stroke:#2B6CB0,color:#133A66,stroke-width:1.5px;
+    classDef retrieval fill:#E8F8EF,stroke:#2F855A,color:#1C5C3C,stroke-width:1.5px;
+    classDef candidate fill:#E6F9F4,stroke:#2C7A7B,color:#1D4E4F,stroke-width:1.5px;
+    classDef validation fill:#FFF4E6,stroke:#C05621,color:#7B341E,stroke-width:1.5px;
+    classDef context fill:#F4ECFF,stroke:#6B46C1,color:#44337A,stroke-width:1.5px;
+    classDef generation fill:#FFECEC,stroke:#C53030,color:#742A2A,stroke-width:1.5px;
+    classDef artifact fill:#F8FAFC,stroke:#475569,color:#0F172A,stroke-width:1.2px,font-family:monospace;
+    classDef decision fill:#FFF8DC,stroke:#B7791F,color:#744210,stroke-width:1.6px;
+    classDef fallback fill:#F5F5F5,stroke:#4A5568,color:#1A202C,stroke-width:1.5px;
+
+    class Q1,Q2,Q3,Q4 query;
+    class R1,R2,R3,R4 retrieval;
+    class C1,C2,C3 candidate;
+    class V1,V2,V3,V4 validation;
+    class X1,X2,X3,X4,X5 context;
+    class L1,L2,L3,L4,L5,L6 generation;
+    class A1,A2,A3,A4,A5,A6 artifact;
+    class D1,D2 decision;
+    class F0,F1,F2 fallback;

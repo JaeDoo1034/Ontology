@@ -1,0 +1,116 @@
+classes:
+  - name: Product
+    description: Sellable object
+  - name: Constraint
+    description: Prompt-time symbolic constraint
+
+instances:
+  - id: BANANA_MILK
+    class: Product
+    label: 바나나우유
+    properties:
+      - key: alias
+        value: 빠나 우유
+      - key: price_krw
+        value: 3000
+      - key: category
+        value: 우유
+      - key: stock
+        value: 18
+  - id: CHOCOLATE_MILK
+    class: Product
+    label: 초코우유
+    properties:
+      - key: alias
+        value: 초코 우유
+      - key: price_krw
+        value: 3200
+      - key: category
+        value: 우유
+      - key: stock
+        value: 12
+  - id: STRAWBERRY_MILK
+    class: Product
+    label: 딸기우유
+    properties:
+      - key: alias
+        value: 딸기 우유
+      - key: price_krw
+        value: 2800
+      - key: category
+        value: 우유
+      - key: stock
+        value: 16
+  - id: MELON_MILK
+    class: Product
+    label: 멜론우유
+    properties:
+      - key: alias
+        value: 멜론 우유
+      - key: price_krw
+        value: 3400
+      - key: category
+        value: 우유
+      - key: stock
+        value: 9
+  - id: WATERMELON_MILK
+    class: Product
+    label: 수박우유
+    properties:
+      - key: alias
+        value: 수박 우유
+      - key: price_krw
+        value: 3600
+      - key: category
+        value: 우유
+      - key: stock
+        value: 6
+
+  - id: PRICE_PRIORITY_RULE
+    class: Constraint
+    label: 가격 우선 규칙
+    properties:
+      - key: rule
+        value: 가격 질문이면 price_krw를 첫 문장에 답변
+      - key: template
+        value: "<상품명> 가격은 <n>원입니다."
+  - id: STOCK_SOLDOUT_RULE
+    class: Constraint
+    label: 품절 안내 규칙
+    properties:
+      - key: rule
+        value: stock equals 0이면 품절 안내를 우선 출력
+      - key: template
+        value: "<상품명>은 현재 품절입니다."
+
+relations:
+  - source: PRICE_PRIORITY_RULE
+    type: applies_to
+    target: BANANA_MILK
+  - source: PRICE_PRIORITY_RULE
+    type: applies_to
+    target: CHOCOLATE_MILK
+  - source: PRICE_PRIORITY_RULE
+    type: applies_to
+    target: STRAWBERRY_MILK
+  - source: PRICE_PRIORITY_RULE
+    type: applies_to
+    target: MELON_MILK
+  - source: PRICE_PRIORITY_RULE
+    type: applies_to
+    target: WATERMELON_MILK
+  - source: STOCK_SOLDOUT_RULE
+    type: applies_to
+    target: BANANA_MILK
+  - source: STOCK_SOLDOUT_RULE
+    type: applies_to
+    target: CHOCOLATE_MILK
+  - source: STOCK_SOLDOUT_RULE
+    type: applies_to
+    target: STRAWBERRY_MILK
+  - source: STOCK_SOLDOUT_RULE
+    type: applies_to
+    target: MELON_MILK
+  - source: STOCK_SOLDOUT_RULE
+    type: applies_to
+    target: WATERMELON_MILK
